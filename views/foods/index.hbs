@@ -1,0 +1,14 @@
+<h1>Our Global Food Favourites</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <th>Name</th>
+        <th>Country</th>
+    </thead>
+    {{#each foods}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.country}}</td>
+        </tr>
+    {{/each}}
+</table>

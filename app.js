@@ -4,8 +4,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// add mongoose for db connection
+var mongoose = require('mongoose')
+
 var indexController = require('./controllers/index');
 var usersController = require('./controllers/users');
+// add reference to our new foods controller
+var foodsController = require('./controllers/foods')
 
 var app = express();
 
@@ -21,6 +26,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexController);
 app.use('/users', usersController);
+
+// map any urls starting with /foods to be handled by the foods controller
+app.use('/foods', foodsController)
+
+// db connection
+var globals = require('./config/globals')
+
+mongoose.connect(globals.db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(
+    (res) => {
+      console.log('Connected to MongoDB')
+    }
+).catch(() => {
+  console.log('Connection to MongoDB failed')
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
