@@ -42,7 +42,53 @@ router.post('/add', (req, res, next) => {
         }
         else {
             // load the updated foods index
-            res.redirect('/foods');
+            res.redirect('/foods')
+        }
+    })
+})
+
+// GET /foods/delete/abc123 - :_id means this method expects a paramter called "_id"
+router.get('/delete/:_id', (req, res, next) => {
+    // use the mongoose Model to delete the selected document
+    Food.remove({ _id: req.params._id }, (err) => {
+        if (err) {
+            console.log(err)
+            res.send(err)
+        }
+        else {
+            res.redirect('/foods')
+        }
+    })
+})
+
+// GET /foods/edit/:_id -> display populated edit form
+router.get('/edit/:_id', (req, res, next) => {
+    Food.findById(req.params._id, (err, food) => {
+        if (err) {
+            console.log(err)
+            res.send(err)
+        }
+        else {
+            res.render('foods/edit', {
+                food: food
+            })
+        }
+    })
+})
+
+// POST /foods/edit/:_id -> updated selected food document
+router.post('/edit/:_id', (req, res, next) => {
+    Food.findOneAndUpdate({ _id: req.params._id },
+    {
+            name: req.body.name,
+            country: req.body.country
+    }, (err, food) => {
+        if (err) {
+            console.log(err)
+            res.send(err)
+        }
+        else {
+            res.redirect('/foods')
         }
     })
 })

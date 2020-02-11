@@ -6,11 +6,15 @@
     <thead>
         <th>Name</th>
         <th>Country</th>
+        <th> </th>
     </thead>
     {{#each foods}}
         <tr>
-            <td>{{this.name}}</td>
+            <td><a href="/foods/edit/{{this._id}}">{{this.name}}</a></td>
             <td>{{this.country}}</td>
+            <td>
+                <a href="/foods/delete/{{this._id}}" class="text-danger" onclick="return confirmDelete();">Delete</a>
+            </td>
         </tr>
     {{/each}}
 </table>
