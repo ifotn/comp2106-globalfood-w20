@@ -7,7 +7,11 @@
     </fieldset>
     <fieldset>
         <label for="country" class="col-sm-2">Country: *</label>
-        <input name="country" id="country" required />
+        <select name="country" id="country">
+            {{#each countries}}
+                <option>{{this.name}}</option>
+            {{/each}}
+        </select>
     </fieldset>
     <button class="btn btn-info offset-sm-2">Save</button>
 </form>

@@ -5,6 +5,7 @@ var router = express.Router()
 // add mongoose & Food model references for CRUD
 var mongoose = require('mongoose')
 var Food = require('../models/food')
+var Country = require('../models/country')
 
 // GET main food page
 router.get('/', (req, res, next) => {
@@ -26,7 +27,18 @@ router.get('/', (req, res, next) => {
 // GET /foods/add -> show blank add food form
 router.get('/add', (req, res, next) => {
     // load the add view we are about to create
-    res.render('foods/add')
+    // get the list of countries for the dropdown
+    Country.find((err, countries) => {
+        if (err) {
+            console.log(err)
+            res.send(err)
+        }
+        else {
+            res.render('foods/add', {
+                countries: countries
+            })
+        }
+    })
 })
 
 // POST /foods/add -> process form submission

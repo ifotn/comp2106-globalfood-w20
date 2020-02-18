@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="048429f0-715d-4a26-b73e-9c1b4b7f6d1c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/javascripts/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/foods/edit.hbs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/controllers/countries.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/models/country.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/countries/add.hbs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/globals.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/globals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/foods.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/foods.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/foods/index.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/foods/index.hbs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layout.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layout.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/foods/add.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/foods/add.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +69,9 @@
       <workItem from="1580221387293" duration="4462000" />
       <workItem from="1580649253383" duration="20000" />
       <workItem from="1580827171745" duration="3449000" />
-      <workItem from="1581427712464" duration="4976000" />
+      <workItem from="1581427712464" duration="6915000" />
+      <workItem from="1581957269093" duration="195000" />
+      <workItem from="1582032772614" duration="840000" />
     </task>
     <servers />
   </component>

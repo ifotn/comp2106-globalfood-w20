@@ -11,6 +11,7 @@ var indexController = require('./controllers/index');
 var usersController = require('./controllers/users');
 // add reference to our new foods controller
 var foodsController = require('./controllers/foods')
+var countriesController = require('./controllers/countries')
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/users', usersController);
 
 // map any urls starting with /foods to be handled by the foods controller
 app.use('/foods', foodsController)
+app.use('/countries', countriesController)
 
 // db connection
 var globals = require('./config/globals')
