@@ -2,6 +2,9 @@
 var express = require('express')
 var router = express.Router()
 
+// add passport to check user authentication
+var passport = require('passport')
+
 // add mongoose & Food model references for CRUD
 var mongoose = require('mongoose')
 var Food = require('../models/food')
@@ -18,7 +21,8 @@ router.get('/', (req, res, next) => {
         else {
             // load the main foods page
             res.render('foods/index', {
-                foods: foods
+                foods: foods,
+                user: req.user
             })
         }
     })

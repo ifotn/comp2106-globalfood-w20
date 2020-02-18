@@ -11,7 +11,7 @@ var session = require('express-session')
 // add mongoose for db connection
 var mongoose = require('mongoose')
 
-var indexController = require('./controllers/index');
+
 var usersController = require('./controllers/users');
 // add reference to our new foods controller
 var foodsController = require('./controllers/foods')
@@ -29,25 +29,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexController);
-app.use('/users', usersController);
-
-// map any urls starting with /foods to be handled by the foods controller
-app.use('/foods', foodsController)
-app.use('/countries', countriesController)
-
 // db connection
 var globals = require('./config/globals')
 
 mongoose.connect(globals.db, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).then(
     (res) => {
-      console.log('Connected to MongoDB')
+        console.log('Connected to MongoDB')
     }
 ).catch(() => {
-  console.log('Connection to MongoDB failed')
+    console.log('Connection to MongoDB failed')
 })
 
 // passport auth config
@@ -69,6 +62,15 @@ passport.use(User.createStrategy())
 // 4. set up passport to read/write user data to/from the session object
 passport.deserializeUser(User.deserializeUser())
 passport.serializeUser(User.serializeUser())
+
+var indexController = require('./controllers/index');
+app.use('/', indexController);
+
+// map any urls starting with /foods to be handled by the foods controller
+app.use('/foods', foodsController)
+app.use('/countries', countriesController)
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passport = require('passport') // needed for login
 
 var mongoose = require('mongoose')
 var Country = require('../models/country') // for country listings
@@ -66,12 +67,23 @@ router.post('/register', (req, res, next) => {
   })
 })
 
-
 // GET: /login => load login form
 router.get('/login', (req, res, next) => {
-  res.render('login')
+  // check the session for error messages to display
+  let messages = req.session.messages || []  // store any session messages in a local variable
+  req.session.messages = [] // clear out any session messages
+
+  // pass any messages to login view
+  res.render('login', {
+    messages: messages
+  })
 })
 
-
+// POST: /login => authenticate user
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/foods',
+  failureRedirect: '/login',
+  failureMessage: 'Invalid Login'
+}))
 
 module.exports = router;
