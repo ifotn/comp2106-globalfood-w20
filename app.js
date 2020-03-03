@@ -63,6 +63,47 @@ passport.use(User.createStrategy())
 passport.deserializeUser(User.deserializeUser())
 passport.serializeUser(User.serializeUser())
 
+// google auth
+var googleStrategy = require('passport-google-oauth20').Strategy;
+
+passport.use(new googleStrategy({
+    clientID: globals.ids.google.clientID,
+    clientSecret: globals.ids.google.clientSecret,
+    callbackURL: globals.ids.google.callbackURL
+},
+    (token, tokenSecret, profile, done) => {
+        // logic to evaluate what we got back from google
+        User.findOne({oauthID: profile.id}, (err, user) => {
+            if (err) {
+                console.log(err)
+            }
+
+            // no error and we already have this user in mongodb users collection so pass the user on to the next method
+            if (!err && user !== null) {
+                done(null, user)
+            }
+            else {
+                // user does not exist so create a new user from this google profile
+                user = new User({
+                    username: profile.displayName,
+                    oauthID: profile.id,
+                    oauthProvider: 'Google',
+                    created: Date.now()
+                })
+
+                user.save((err) => {
+                    if (err) {
+                        console.log(err)
+                    }
+                    else {
+                        done(null, user)
+                    }
+                })
+            }
+        })
+    }
+    ))
+
 var indexController = require('./controllers/index');
 app.use('/', indexController);
 
