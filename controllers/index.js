@@ -8,7 +8,10 @@ var User = require('../models/user') // for registration & login
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'COMP2106 Global Food Market' });
+  res.render('index', {
+    title: 'COMP2106 Global Food Market',
+    user: req.user
+  });
 });
 
 /* GET about page */
@@ -40,7 +43,8 @@ router.get('/about', (req, res, next) => {
     }else{
       // load the main countries page
       res.render('about', {
-        countries: countries
+        countries: countries,
+        user: req.user
       })
     }
   })

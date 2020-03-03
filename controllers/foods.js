@@ -50,10 +50,11 @@ router.get('/add', isAuthenticated, (req, res, next) => {
         }
         else {
             res.render('foods/add', {
-                countries: countries
+                countries: countries,
+                user: req.user
             })
         }
-    })
+    }).sort({ name: 1 })
 })
 
 // POST /foods/add -> process form submission
@@ -97,7 +98,8 @@ router.get('/edit/:_id', isAuthenticated, (req, res, next) => {
         }
         else {
             res.render('foods/edit', {
-                food: food
+                food: food,
+                user: req.user
             })
         }
     })

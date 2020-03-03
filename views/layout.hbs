@@ -4,6 +4,8 @@
     <title>{{title}}</title>
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="/stylesheets/bootstrap.min.css" />
+      <!-- Google Domain Verification -->
+      <meta name="google-site-verification" content="OAEwg3wEnMOv7yLXM1kS_1WiRvfvEe2sC4hfAjPqx2E" />
   </head>
   <body>
 
@@ -27,15 +29,23 @@
                   <li class="nav-item">
                       <a class="nav-link" href="/foods">Our Food</a>
                   </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="/register">Register</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="/login">Login</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="/logout">Log Out</a>
-                  </li>
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                  {{#if user }}
+                      <li class="nav-item">
+                          <a class="nav-link" href="#">{{user.username}}</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/logout">Logout</a>
+                      </li>
+                  {{else}}
+                      <li class="nav-item">
+                          <a class="nav-link" href="/register">Register</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link" href="/login">Login</a>
+                      </li>
+                  {{/if}}
               </ul>
           </div>
       </nav>
