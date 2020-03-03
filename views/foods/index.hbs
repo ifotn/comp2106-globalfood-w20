@@ -8,15 +8,26 @@
     <thead>
         <th>Name</th>
         <th>Country</th>
-        <th> </th>
+        {{#if user}}
+            <th> </th>
+        {{/if}}
     </thead>
     {{#each foods}}
         <tr>
-            <td><a href="/foods/edit/{{this._id}}">{{this.name}}</a></td>
-            <td>{{this.country}}</td>
             <td>
-                <a href="/foods/delete/{{this._id}}" class="text-danger" onclick="return confirmDelete();">Delete</a>
+                <!-- we are inside the foods loop so we need to prefix the top-level "user" variable with ../ -->
+                {{#if ../user }}
+                    <a href="/foods/edit/{{this._id}}">{{this.name}}</a>
+                {{else}}
+                    {{this.name}}
+                {{/if}}
             </td>
+            <td>{{this.country}}</td>
+            {{#if ../user }}
+                <td>
+                    <a href="/foods/delete/{{this._id}}" class="text-danger" onclick="return confirmDelete();">Delete</a>
+                </td>
+            {{/if}}
         </tr>
     {{/each}}
 </table>

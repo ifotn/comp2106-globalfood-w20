@@ -86,4 +86,14 @@ router.post('/login', passport.authenticate('local', {
   failureMessage: 'Invalid Login'
 }))
 
+// GET: /logout => sign user out
+router.get('/logout', (req, res, next) => {
+  // clear any messages in the session object
+  req.session.messages = []
+
+  // sign out & redirect to login
+  req.logout()
+  res.redirect('/login')
+})
+
 module.exports = router;

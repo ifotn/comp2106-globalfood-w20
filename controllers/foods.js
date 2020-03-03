@@ -10,6 +10,17 @@ var mongoose = require('mongoose')
 var Food = require('../models/food')
 var Country = require('../models/country')
 
+// authentication check
+function isAuthenticated(req, res, next)  {
+    // use express built-in method to check for user identity.  If found, just continue to the next method
+    if (req.isAuthenticated()) {
+        return next()
+    }
+
+    // anonymous so redirect to login
+    res.redirect('/login')
+}
+
 // GET main food page
 router.get('/', (req, res, next) => {
     // use the Food model & mongoose to select all the foods from MongoDB
@@ -29,7 +40,7 @@ router.get('/', (req, res, next) => {
 })
 
 // GET /foods/add -> show blank add food form
-router.get('/add', (req, res, next) => {
+router.get('/add', isAuthenticated, (req, res, next) => {
     // load the add view we are about to create
     // get the list of countries for the dropdown
     Country.find((err, countries) => {
@@ -46,7 +57,7 @@ router.get('/add', (req, res, next) => {
 })
 
 // POST /foods/add -> process form submission
-router.post('/add', (req, res, next) => {
+router.post('/add', isAuthenticated, (req, res, next) => {
     // create a new document in the foods collection using the Food model, we'll get an error or new food document back
     Food.create({
         name: req.body.name,
@@ -64,7 +75,7 @@ router.post('/add', (req, res, next) => {
 })
 
 // GET /foods/delete/abc123 - :_id means this method expects a paramter called "_id"
-router.get('/delete/:_id', (req, res, next) => {
+router.get('/delete/:_id', isAuthenticated, (req, res, next) => {
     // use the mongoose Model to delete the selected document
     Food.remove({ _id: req.params._id }, (err) => {
         if (err) {
@@ -78,7 +89,7 @@ router.get('/delete/:_id', (req, res, next) => {
 })
 
 // GET /foods/edit/:_id -> display populated edit form
-router.get('/edit/:_id', (req, res, next) => {
+router.get('/edit/:_id', isAuthenticated, (req, res, next) => {
     Food.findById(req.params._id, (err, food) => {
         if (err) {
             console.log(err)
@@ -93,7 +104,7 @@ router.get('/edit/:_id', (req, res, next) => {
 })
 
 // POST /foods/edit/:_id -> updated selected food document
-router.post('/edit/:_id', (req, res, next) => {
+router.post('/edit/:_id',isAuthenticated, (req, res, next) => {
     Food.findOneAndUpdate({ _id: req.params._id },
     {
             name: req.body.name,
