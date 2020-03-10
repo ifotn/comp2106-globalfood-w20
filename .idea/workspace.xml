@@ -2,7 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="048429f0-715d-4a26-b73e-9c1b4b7f6d1c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/images/facebook.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/globals.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/globals.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/acorn/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/acorn/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/acorn/dist/acorn.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/acorn/dist/acorn.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/acorn/dist/acorn.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/acorn/dist/acorn.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/acorn/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/acorn/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.hbs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/register.hbs" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.hbs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../food-working" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../eval/assingment-1-master" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -71,7 +82,9 @@
       <workItem from="1582043019344" duration="82000" />
       <workItem from="1583074539567" duration="690000" />
       <workItem from="1583167637784" duration="45000" />
-      <workItem from="1583241387299" duration="8718000" />
+      <workItem from="1583241387299" duration="8766000" />
+      <workItem from="1583526918062" duration="78000" />
+      <workItem from="1583841903521" duration="2009000" />
     </task>
     <servers />
   </component>
@@ -82,10 +95,11 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="550" y="170" key="FileChooserDialogImpl" timestamp="1583167652561">
+    <state x="550" y="170" key="FileChooserDialogImpl" timestamp="1583526994269">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="550" y="170" key="FileChooserDialogImpl/0.0.1536.824/3840.0.1280.984@0.0.1536.824" timestamp="1580649271417" />
     <state x="550" y="170" key="FileChooserDialogImpl/0.0.1536.824/3840.0.1680.1010@0.0.1536.824" timestamp="1583167652561" />
+    <state x="550" y="170" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1583526994269" />
   </component>
 </project>
