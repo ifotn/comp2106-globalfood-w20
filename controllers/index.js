@@ -112,4 +112,16 @@ router.get('/google/callback', passport.authenticate('google', {
   res.redirect('/foods')
 })
 
+// GET: /facebook => invoke Facebook Log In
+router.get('/facebook', passport.authenticate('facebook'),
+    (req, res, next) => {}
+)
+
+// GET: /facebook/callback => process successful facebook log in
+router.get('/facebook/callback', passport.authenticate('facebook', {
+  failureRedirect: '/login'
+}), (req, res, next) => {
+  res.redirect('/foods')
+})
+
 module.exports = router;
