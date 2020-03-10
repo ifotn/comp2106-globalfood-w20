@@ -60,8 +60,11 @@ var User = require('./models/user')
 passport.use(User.createStrategy())
 
 // 4. set up passport to read/write user data to/from the session object
-passport.deserializeUser(User.deserializeUser())
-passport.serializeUser(User.serializeUser())
+// now modified for facebook and moved below fb strategy configuration
+//passport.deserializeUser(User.deserializeUser())
+//passport.serializeUser(User.serializeUser())
+
+
 
 // google auth
 var googleStrategy = require('passport-google-oauth20').Strategy;
@@ -143,6 +146,22 @@ passport.use(new facebookStrategy({
             }
         })
     }))
+
+// write the user id to the session object for storage
+passport.serializeUser((user, done) => {
+    done(null, user._id)
+})
+
+passport.deserializeUser((id, done) => {
+    User.findById(id, (err, user) => {
+        if (!err) {
+            done(null, user)
+        }
+        else {
+            done(err, null)
+        }
+    })
+})
 
 var indexController = require('./controllers/index');
 app.use('/', indexController);
