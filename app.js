@@ -117,7 +117,7 @@ passport.use(new facebookStrategy({
 },
     (accessToken, refreshToken, profile, done) => {
         // check if this user already exists in our mongodb
-        User.findOne({oauth: profile.id}, (err, user) => {
+        User.findOne({oauthID: profile.id}, (err, user) => {
             if (err) {
                 console.log(err)
             }
