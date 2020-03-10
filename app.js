@@ -170,7 +170,19 @@ app.use('/', indexController);
 app.use('/foods', foodsController)
 app.use('/countries', countriesController)
 
+// helper method to select the proper country in the foods/edit view
+var hbs = require('hbs')
 
+hbs.registerHelper('createOption', (currentValue, selectedValue) => {
+    // if the 2 values match, add the text ' selected', otherwise add an empty string
+    //var selectedProperty = currentValue === selectedValue ? ' selected' : ''
+    var selectedProperty = ''
+    if (currentValue === selectedValue) {
+        selectedProperty = ' selected'
+    }
+
+    return new hbs.SafeString('<option' + selectedProperty + '>' + currentValue + '</option>')
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

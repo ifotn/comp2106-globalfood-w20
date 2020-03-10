@@ -97,10 +97,19 @@ router.get('/edit/:_id', isAuthenticated, (req, res, next) => {
             res.send(err)
         }
         else {
-            res.render('foods/edit', {
-                food: food,
-                user: req.user
-            })
+            // get country list to fill dropdown
+            Country.find((err, countries) => {
+                if (err) {
+                    console.log(err)
+                }
+                else {
+                    res.render('foods/edit', {
+                        food: food,
+                        user: req.user,
+                        countries: countries
+                    })
+                }
+            }).sort({ name: 1 })
         }
     })
 })
